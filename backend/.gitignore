@@ -2,6 +2,9 @@ node_modules/
 .vscode/
 
 .env
-#.env contain:
+# .env contain:
 #   PORT
 #   DB_USERNAME
+#   DB_PASSWORD
+#   DB_HOSTNAME
+#   DB_DATABASE
