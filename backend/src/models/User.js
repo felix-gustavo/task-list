@@ -2,7 +2,7 @@ const { Sequelize, sequelize } = require('../database')
 
 const bcrypt = require('bcrypt')
 
-module.exports = sequelize.define('user', {
+const User = sequelize.define('user', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -27,3 +27,7 @@ module.exports = sequelize.define('user', {
     beforeCreate: user => user.password = bcrypt.hashSync(user.password, 4)
   }
 })
+
+User.isPassword = (password, encondedPassword) => bcrypt.compareSync(password, encondedPassword)
+
+module.exports = User
