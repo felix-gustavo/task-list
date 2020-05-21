@@ -3,7 +3,7 @@ const { Sequelize, sequelize } = require('../database')
 const Task = sequelize.define('task', {
   id: {
     type: Sequelize.INTEGER,
-    autoIncrements: true, 
+    autoIncrement: true, 
     allowNull: false,
     primaryKey: true
   },
@@ -17,11 +17,11 @@ const Task = sequelize.define('task', {
   },
   color: {
     type: Sequelize.STRING,
-    allowNull: false
-  },
+    allowNull: true
+  }
 }, {
   timestamps: false,
-  freezeTableName: true
+  freezeTableName: true,
 })
 
 module.exports = Task
