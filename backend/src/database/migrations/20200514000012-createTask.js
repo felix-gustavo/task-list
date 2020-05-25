@@ -16,10 +16,6 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false
     },
-    color: {
-      type: Sequelize.STRING,
-      allowNull: true
-    },
     user_iduser: {
       type: Sequelize.INTEGER,
       allowNull: false,
