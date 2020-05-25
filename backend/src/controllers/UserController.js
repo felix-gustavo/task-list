@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Task = require('../models/Task')
 
 exports.store = async (req, res) => {
   const { name, email, password } = req.body
@@ -25,4 +26,17 @@ exports.show = async (req, res) => {
   !user ?
   res.status(404).json({error: 'Usuário não encontrado'}) :
   res.json(user)
+}
+
+exports.getTasksByUser = async (req, res) => {
+  const { id } = req.params
+  const tasks = await User.findByPk(id, {
+    include: { 
+      model: Task,
+      where: { user_iduser: id },
+      attributes: ['id', 'title', 'description']
+    }
+  })
+  if(tasks.length === 0) return res.status(404).json({error: 'Nenhuma tarefa cadastrada para este usuário'})
+  res.json(tasks)
 }
