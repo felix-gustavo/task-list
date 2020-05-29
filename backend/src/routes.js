@@ -10,17 +10,28 @@ routes.get('/', (req, res) => {
 })
 
 routes.get('/user', UserController.index)
+routes.get('/user/task', (req, res, next) => {
+  req.headers.user_iduser = jwt.verify(req.headers.token, process.env.API_SECRET)
+  next()
+}, UserController.getTasksByUser)
 routes.get('/user/:id', UserController.show)
-routes.get('/user/:id/task', UserController.getTasksByUser)
 routes.post('/user', UserController.store)
-routes.delete('/user/:id', UserController.delete)
+routes.delete('/user', (req, res, next) => {
+  req.headers.user_iduser = jwt.verify(req.headers.token, process.env.API_SECRET)
+  next()
+}, UserController.delete)
+
+routes.put('/user', (req, res, next) => {
+    req.headers.user_iduser = jwt.verify(req.headers.token, process.env.API_SECRET)
+    next()
+}, UserController.put)
 
 routes.post('/login', SessionController.post)
 
 routes.post('/task', (req, res, next) => {
   req.headers.user_iduser = jwt.verify(req.headers.token, process.env.API_SECRET)
   next()
-}, TaskController.post)
+}, TaskController.store)
 routes.get('/task', TaskController.index)
 routes.get('/task/:id', TaskController.show)
 

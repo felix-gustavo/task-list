@@ -10,8 +10,21 @@ exports.store = async (req, res) => {
   res.json(user)
 }
 
+exports.put = async (req, res) => {
+  const id = req.headers.user_iduser
+  const { name, password } = req.body
+
+  const rowsUpdated = await User.update({ name, password }, { 
+    where: { id },
+    individualHooks: true
+  })
+  if(!rowsUpdated) return res.status(400).json({error: 'Erro ao alterar informações'})
+
+  res.json()
+}
+
 exports.delete = async (req, res) => {
-  const user = await User.destroy({where: { id: req.params.id }})
+  const user = await User.destroy({where: { id: req.headers.user_iduser }})
   !user ?
   res.status(404).json('Usuário não encontrado') :
   res.json()
@@ -29,14 +42,15 @@ exports.show = async (req, res) => {
 }
 
 exports.getTasksByUser = async (req, res) => {
-  const { id } = req.params
+  const id = req.headers.user_iduser
+
   const tasks = await User.findByPk(id, {
     include: { 
       model: Task,
       where: { user_iduser: id },
       attributes: ['id', 'title', 'description']
-    }
-  })
-  if(tasks.length === 0) return res.status(404).json({error: 'Nenhuma tarefa cadastrada para este usuário'})
+  }})
+  
+  if(!tasks) return res.status(404).json({error: 'Não há registros'})
   res.json(tasks)
 }

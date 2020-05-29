@@ -1,7 +1,7 @@
 const Task = require('../models/Task')
 require('../models/associations/UserTask')
 
-exports.post = async (req, res) => {
+exports.store = async (req, res) => {
   const { title, description } = req.body
   const { user_iduser } = req.headers
 
