@@ -2,16 +2,23 @@ import React from 'react'
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
+import Menu from './components/Menu'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import CreateTask from './pages/CreateTask'
 import NotFound from './pages/NotFound'
 
 const App = () => {
-  //{ exact, path, component }
   const PrivateRoute = props => {
-    return localStorage.getItem('token') ?
-    <Route render={() => <props.component token={localStorage.getItem('token')} /> } /> : <Redirect to='/login'/>
+    if(localStorage.getItem('token')) 
+      return (
+        <>
+          <Menu/>
+          <Route {...props} />
+        </>
+      )
+    else return <Redirect to='/login'/>
   }
 
   return (
@@ -19,7 +26,8 @@ const App = () => {
       <Switch>
         <PrivateRoute exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
+        <PrivateRoute exact path='/register' component={Register} />
+        <PrivateRoute exact path='/create-task' component={CreateTask} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
