@@ -1,0 +1,45 @@
+.form {
+  background-color: #5F4BB6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 69px auto;
+  width: 50%;
+  max-width: 800px;
+}
+.title {
+  font-size: 3.6rem;
+}
+.field {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 9px 0px;
+  width: 50%;
+}
+.field > input {
+  height: 40px;
+  font-size: 1rem;
+}
+.field:hover{
+  transform: scale(1.03);
+  transition: transform .1s;
+}
+.link-create-account {
+  text-align-last: right;
+  color: white;
+}
+.btn {
+  margin: 35px;
+  margin-bottom: 50px;
+  font-size: 1rem;
+  padding: 5px 15px;
+  border: 2px solid #C4EBC8;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(1.13);
+  transition: transform .1s;
+}
