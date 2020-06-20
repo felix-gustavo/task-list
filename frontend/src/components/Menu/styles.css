@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5F4BB6;
+  padding: 0px 80px;
+}
+
+.logo {
+  margin: 9px 0px;
+  cursor: pointer;  
+}

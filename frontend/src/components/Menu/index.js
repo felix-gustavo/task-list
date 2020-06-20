@@ -1,6 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
+import logo from '../../assets/images/logo.svg'
+import profile from '../../assets/images/profile.svg'
+import './styles.css'
+
 const Menu = () => {
   const history = useHistory()
   
@@ -10,9 +14,9 @@ const Menu = () => {
   }
 
   return (
-    <div>
-      <label>LOGO</label>
-      <button onClick={handleExit}>Sair</button>
+    <div className='content'>
+      <img src={logo} className='logo' onClick={() => history.push('/')}></img>
+      <img src={profile} className='exit' onClick={handleExit}></img>
     </div>
   )
 }
