@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
-import './styles.css'
+
+import { Form, Title, Field, LinkStyled, Button } from './styles'
 
 const Login = () => {
   const history = useHistory()
@@ -21,21 +22,21 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='form'>
-      <h1 className='title'>Login</h1>
-      <div className='field'>
+    <Form onSubmit={handleSubmit} >
+      <Title>Login</Title>
+      <Field>
         <label>Email</label>
         <input type='email' required autoFocus placeholder='Digite seu email' onChange={e => setEmail(e.target.value)} />
-      </div>
-      <div className='field'>
+      </Field>
+      <Field>
         <label>Senha</label>
         <input type='password' required placeholder='Digite sua senha' onChange={e => setPassword(e.target.value)} />
-      </div>
+      </Field>
       <div>
-        <Link to='/register' className='link-create-account'>Criar uma conta</Link>
+        <LinkStyled to='/register' >Criar uma conta</LinkStyled>
       </div>
-      <button type='submit' className='btn'>Entrar</button>
-    </form>
+      <Button type='submit' >Entrar</Button>
+    </Form>
   )
 }
 
