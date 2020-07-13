@@ -9,6 +9,8 @@ import Register from './pages/Register'
 import CreateTask from './pages/CreateTask'
 import NotFound from './pages/NotFound'
 
+import GlobalStyles from './components/GlobalStyles'
+
 const App = () => {
   const PrivateRoute = props => {
     if(localStorage.getItem('token')) 
@@ -22,15 +24,18 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <PrivateRoute exact path='/' component={Home} />
-        <Route exact path='/login' component={Login} />
-        <PrivateRoute exact path='/register' component={Register} />
-        <PrivateRoute exact path='/create-task' component={CreateTask} />
-        <Route component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <GlobalStyles/>
+      <BrowserRouter>
+        <Switch>
+          <PrivateRoute exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <PrivateRoute exact path='/create-task' component={CreateTask} />
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+    </>
   )
 }
 
