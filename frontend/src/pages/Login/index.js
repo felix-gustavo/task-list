@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 import api from '../../services/api'
 
@@ -24,17 +24,11 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit} >
       <Title>Login</Title>
-      <Field>
-        <label>Email</label>
-        <input type='email' required autoFocus placeholder='Digite seu email' onChange={e => setEmail(e.target.value)} />
-      </Field>
-      <Field>
-        <label>Senha</label>
-        <input type='password' required placeholder='Digite sua senha' onChange={e => setPassword(e.target.value)} />
-      </Field>
-      <div>
-        <LinkStyled to='/register' >Criar uma conta</LinkStyled>
-      </div>
+      <Field id='email' type='email' title='Digite seu email' required autoFocus placeholder='Email' onChange={e => setEmail(e.target.value)} />
+      <Field id='password' type='password' title='Digite sua senha' required placeholder='Senha' onChange={e => setPassword(e.target.value)} />
+      <LinkStyled>
+        <Link to='/register' >Criar uma conta</Link>
+      </LinkStyled>
       <Button type='submit' >Entrar</Button>
     </Form>
   )

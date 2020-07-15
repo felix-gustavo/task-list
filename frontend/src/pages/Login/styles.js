@@ -1,50 +1,56 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 69px auto;
-  width: 50%;
-  max-width: 800px;
-  background: linear-gradient(#0a4b85, #862590);
+  margin: 50px auto ;
+  width: 90%;
+  max-width: 680px;
+  background-color: var(--white-ice);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
 `;
 
 export const Title = styled.h1`
-  font-size: 3.6rem;
+  font-size: 44px;
+  margin: 50px 0 30px;
 `
 
-export const Field = styled.div`
-  font-size: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  margin: 9px 0px;
-  width: 50%;
-  :hover {
-    transform: scale(1.03);
-    transition: transform .1s;
-  };
-  input { 
-    height: 40px;
-    font-size: 1rem; 
-  };
+export const Field = styled.input`
+  width: 100%;
+  max-width: 430px;
+  font-size: 12px;   
+  margin: 10px 0;
+  width: 250px;  
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: none;
+  background-color: var(--white-ele);
 `
 
-export const LinkStyled = styled(Link)`
-  color: white;
+export const LinkStyled = styled.div`
+  width: 250px;
+  text-align: end;
+  a {
+    font-size: 11px;
+  }
 `
 
 export const Button = styled.button`
-  margin: 35px;
-  margin-bottom: 50px;
-  font-size: 1rem;
-  padding: 5px 15px;
-  border: 2px solid #C4EBC8;
-  background: none;
-  color: white;
-  :hover {
-    transform: scale(1.13);
-    transition: transform .1s;
-  }
+  font-size: 14px;
+  font-weight: 500;
+  margin: 30px 0 50px;
+  padding: 6px 30px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  border: none;
+  background-color: var(--white-ele);
+  cursor: pointer;
+  :active {
+    box-shadow: none;
+    outline: none;
+    transform: translateY(3px);
+  };
 `
