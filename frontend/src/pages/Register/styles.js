@@ -17,12 +17,6 @@ export const Title = styled.h1`
   margin: 50px 0 30px;
 `
 
-export const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-`
-
 export const Field = styled.input`
   font-size: 12px; 
   padding: 10px;

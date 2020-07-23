@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import api from '../../services/api'
 
-import { Form, Title, Field, LinkStyled, Button, Row } from './styles.js'
+import { Form, Title, Field, LinkStyled, Button } from './styles.js'
 
 const Register = () => {
   const history = useHistory()
